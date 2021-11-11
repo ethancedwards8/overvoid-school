@@ -4,41 +4,38 @@ using UnityEngine;
 
 public class Boundaries : MonoBehaviour
 {
-    [SerializeField] private float xMax;
-    [SerializeField] private float xMin;
-    [SerializeField] private float yMax;
-    [SerializeField] private float yMin;
-    [SerializeField] private int mapWidth;
-    [SerializeField] private int mapHeight;
+    [SerializeField] 
+    private float xMax, xMin, yMax, yMin;
+    [SerializeField] 
+    private int mapWidth, mapHeight;
 
 //\\----------------------------------------\\//
 
-    public bool checkBounds(Transform playerPos, float xoffset, float yoffset)
+    public bool checkBounds(Transform playerPos, float xOffset, float yOffset)
     {
-        float px = playerPos.position.x + xoffset;
-        float py = playerPos.position.y + yoffset;
-        bool inbounds = false;
+        float px = playerPos.position.x + xOffset;
+        float py = playerPos.position.y + yOffset;
+        bool inBounds = false;
         //checking players position against the min/max x/y values for current map and return true if we can move or false if not
 
         if((px <= xMax && px >= xMin) && (py <= yMax && py >= yMin))
         {
-            inbounds = true;
+            inBounds = true;
         }
         else
         {
-            inbounds = false;
+            inBounds = false;
         }
-        return inbounds;
+        return inBounds;
     }
 
     public int getMapHeight()
     {
-        return mapHeight;
+        return this.mapHeight;
     }
 
     public int getMapWidth()
     {
-        return mapWidth;
+        return this.mapWidth;
     }
-
 }
