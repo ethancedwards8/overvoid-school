@@ -4,7 +4,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Unity c# stuff
+* # dirty hack
 !*.cs
+
 
 # User-specific files
 *.rsuser
