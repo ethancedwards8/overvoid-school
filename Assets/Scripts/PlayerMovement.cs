@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private GameObject currentMap;
     private Boundaries currentMapBoundaries;
+
     [SerializeField] GameObject currentTile;
 
     void Start()
