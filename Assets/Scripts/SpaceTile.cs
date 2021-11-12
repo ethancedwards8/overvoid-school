@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 
 [System.Serializable]
 public class SpaceTile : MonoBehaviour
 {
 
-    [SerializeField] bool canVisit = false;
+    [SerializeField] bool canVisit = true;
     [SerializeField] bool hasMiniGame = false;
     [SerializeField] bool locked = false;
     [SerializeField] bool goalTile = false;
     [SerializeField] bool visited = false;
 
-    [SerializeField] private int tileID;
+    private int tileID;
 
     [SerializeField] public string description;
     [SerializeField] public List<string> npcList;
@@ -21,36 +22,42 @@ public class SpaceTile : MonoBehaviour
     [SerializeField] public float difficulty = 1.0f;
     [SerializeField] public int fuelCost = 1;
 
-//\\----------------------------------------------------\\//
+    //\\----------------------------------------------------\\//
+
+    private void Start()
+    {
+        string tileNum = Regex.Replace(gameObject.name, "[a-z]", ""); // regex to the rescue! 
+        tileID = System.Int32.Parse(tileNum);
+    }
 
     public void spawnObject()
     {
-
+        // creates an object related to the file
     }
 
     public bool getCanVisitStatus()
     {
-        return canVisit;
+        return this.canVisit;
     }
 
     public bool getLockStatus()
     {
-        return locked;
+        return this.locked;
     }
 
     public void setLockedStatus(bool val)
     {
-        locked = val;
+        this.locked = val;
     }
 
     public string getDescription()
     {
-        return description;
+        return this.description;
     }
 
     public int getTileID()
     {
-        return tileID;
+        return this.tileID;
     }
 
 }
