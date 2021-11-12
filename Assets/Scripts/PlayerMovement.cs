@@ -14,13 +14,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private GameObject currentMap;
     private Boundaries currentMapBoundaries;
-
     [SerializeField] GameObject currentTile;
 
     void Start()
     {
         currentMapBoundaries = currentMap.GetComponent<Boundaries>();
-        Debug.Log(currentTile.GetComponent<SpaceTile>().getDescription());
+       // Debug.Log(currentTile.GetComponent<SpaceTile>().getDescription());
     }
 
     void Update()
@@ -28,11 +27,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
             move(Directions.NORTH);
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            move(Directions.EAST);
+            move(Directions.WEST);
         else if (Input.GetKeyDown(KeyCode.DownArrow))
             move(Directions.SOUTH);
         else if (Input.GetKeyDown(KeyCode.RightArrow))
-            move(Directions.WEST);
+            move(Directions.EAST);
         else
             ;
     }
@@ -71,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
                     break;
 
                 case Directions.EAST:
-                    transform.position += Vector3.left;
+                    transform.position += Vector3.right;
                     break;
 
                 case Directions.SOUTH:
@@ -79,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
                     break;
 
                 case Directions.WEST:
-                    transform.position += Vector3.right;
+                    transform.position += Vector3.left;
                     break;
 
                 default:
@@ -90,8 +89,64 @@ public class PlayerMovement : MonoBehaviour
 
     public bool checkTile(Directions tileDir)
     {
+        int currentTileID = currentTile.GetComponent<SpaceTile>().getTileID();
+        int mapWidth = currentMapBoundaries.GetComponent<Boundaries>().getMapWidth();
+        int nextTileID = 0;
+        GameObject nextTile;
         bool found = false;
 
+
+        
+        switch (tileDir) {
+            case Directions.NORTH:
+                nextTileID = currentTileID - mapWidth;
+                break;
+
+            case Directions.EAST:
+                nextTileID = currentTileID + 1;
+                break;
+
+            case Directions.SOUTH:
+                nextTileID = currentTileID + mapWidth;
+                break;
+
+            case Directions.WEST:
+                nextTileID = currentTileID - 1;
+                break;
+
+            default:
+                break;
+        }
+
+        if (GameObject.Find("space" + nextTileID)) {
+            nextTile = GameObject.Find("space" + nextTileID);
+
+            if (nextTile.GetComponent<SpaceTile>().getCanVisitStatus()) {
+                if (nextTile.GetComponent<SpaceTile>().getLockStatus()) {
+                    Debug.Log("The tile is locked");
+                } else {
+                    currentTile = nextTile;
+                    found = true;
+                }
+            } else {
+                found = false;
+            }
+        } else {
+            found = false;
+        }
+
         return found;
+    }
+
+    public bool checkTileLock(bool isLocked)
+    {
+        bool locked = true;
+
+        if (isLocked)
+            locked = true;
+        else
+            locked = false;
+
+        return locked;
     }
 }
