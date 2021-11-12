@@ -94,8 +94,6 @@ public class PlayerMovement : MonoBehaviour
         int nextTileID = 0;
         GameObject nextTile;
         bool found = false;
-
-
         
         switch (tileDir) {
             case Directions.NORTH:
@@ -118,19 +116,24 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        if (GameObject.Find("space" + nextTileID)) {
+        if (GameObject.Find("space" + nextTileID)) 
+        {
             nextTile = GameObject.Find("space" + nextTileID);
 
-            if (nextTile.GetComponent<SpaceTile>().getCanVisitStatus()) {
+            if (nextTile.GetComponent<SpaceTile>().getCanVisitStatus()) 
+            {
+
                 if (nextTile.GetComponent<SpaceTile>().getLockStatus()) {
                     Debug.Log("The tile is locked");
                 } else {
                     currentTile = nextTile;
                     found = true;
                 }
+
             } else {
                 found = false;
             }
+
         } else {
             found = false;
         }

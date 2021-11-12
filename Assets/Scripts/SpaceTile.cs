@@ -7,12 +7,8 @@ using System.Text.RegularExpressions;
 [System.Serializable]
 public class SpaceTile : MonoBehaviour
 {
-
-    [SerializeField] bool canVisit = true;
-    [SerializeField] bool hasMiniGame = false;
-    [SerializeField] bool locked = false;
-    [SerializeField] bool goalTile = false;
-    [SerializeField] bool visited = false;
+    [SerializeField]
+    bool canVisit = true, hasMiniGame = false, locked = false, goalTile = false, visited = false;
 
     private int tileID;
 
