@@ -31,6 +31,11 @@ public class SpaceTile : MonoBehaviour
         // creates an object related to the file
     }
 
+/*    public T Get<T>()
+    {
+        return;
+    }
+*/
     public bool getCanVisitStatus()
     {
         return this.canVisit;
@@ -55,5 +60,16 @@ public class SpaceTile : MonoBehaviour
     {
         return this.tileID;
     }
+
+    public bool getVisited()
+    {
+        return this.visited;
+    }
+
+    public void setVisited(bool val)
+    {
+        this.visited = val;
+    }
+
 
 }
