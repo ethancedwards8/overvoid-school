@@ -2,42 +2,82 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryItem
+public struct InventoryItem
 {
     public string name; // the name of item
     public EPlanetResource type; // the type of item
+    public float value;
+
+    public InventoryItem(string name, EPlanetResource type, float value)
+    {
+        this.name = name;
+        this.type = type;
+        this.value = value;
+    }
 }
+
+// TODO: look into [UnityTest] and [Test]
 
 public class InventoryController : MonoBehaviour
 {
-    private int arrayPtr = 0;
+    [SerializeField] private int maxInvLength = 5; // max inv length
 
-    // Example code for both implementations:
+    [SerializeField] private List<InventoryItem> inventory = new List<InventoryItem>(); //Serializable so that we could manually add things
 
-    // If its weight: We use a list - as you can expand a list
-    // List<InventoryItem> listInv = new List<InventoryItem>();
-    // OBSOLETE 
-
-    // If its slot based: We use an array - as you cannot expand an array, making it an obvious choice for a slot based inventory
-    public InventoryItem[] slotInv = new InventoryItem[5];
-
-    // so, we have changed our datatypes from string -> to InventoryItem, which will represent our items in our inventory
-
-    public void addItem(InventoryItem item)
+    private void Start()
     {
-        if (arrayPtr <= slotInv.Length) {
-            slotInv[arrayPtr] = item;
-            arrayPtr++;
+
+    }
+
+    public bool addItem(InventoryItem item)
+    {
+        bool success = false;
+
+        if (inventory.Count < maxInvLength) {
+            inventory.Add(item);
+            success = true;
         } else {
-            Debug.Log("sorry, you're trying to access an element that doesn't exist");
+            Debug.Log("sorry, you're trying to add to a full array");
+            success = false;
         }
+
+        return success;
     }
 
-    public void removeItem(int slot)
+    public bool removeItem(InventoryItem item)
     {
-        slotInv[slot] = null;
-        arrayPtr--;
+        bool success = false;
+
+        if (inventory.Remove(item))
+            success = true;
+        else
+            success = false;
+
+        return success;
     }
 
+    public InventoryItem checkInventory(int item)
+    {
+        return this.inventory[item];
+    }
 
+    public List<InventoryItem> listItems()
+    {
+        for (int i = 0; i < inventory.Count; i++)
+            Debug.Log(this.inventory[i].name);
+
+        return this.inventory;
+    }
+
+    public bool containsItem(InventoryItem item)
+    {
+        bool found = false;
+
+        if (inventory.Contains(item))
+            found = true;
+        else
+            found = false;
+
+        return found;
+    }
 }

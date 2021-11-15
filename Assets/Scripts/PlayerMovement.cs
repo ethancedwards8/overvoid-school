@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentMapBoundaries = currentMap.GetComponent<Boundaries>();
+        //currentTile.
        // Debug.Log(currentTile.GetComponent<SpaceTile>().getDescription());
     }
 
