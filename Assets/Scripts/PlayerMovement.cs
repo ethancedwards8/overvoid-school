@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public void move(Directions where)
     {
         float xOffset = 0, yOffset = 0;
-        
+
         // probably should be a helper function, we should look into a "Utility" class.
         switch (where) {
             case Directions.NORTH:
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         int nextTileID = 0;
         GameObject nextTile;
         bool found = false;
-        
+
         switch (tileDir) {
             case Directions.NORTH:
                 nextTileID = currentTileID - mapWidth;
@@ -117,11 +117,11 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        if (GameObject.Find("space" + nextTileID)) 
+        if (GameObject.Find("space" + nextTileID))
         {
             nextTile = GameObject.Find("space" + nextTileID);
 
-            if (nextTile.GetComponent<SpaceTile>().getCanVisitStatus()) 
+            if (nextTile.GetComponent<SpaceTile>().getCanVisitStatus())
             {
 
                 if (nextTile.GetComponent<SpaceTile>().getLockStatus()) {
