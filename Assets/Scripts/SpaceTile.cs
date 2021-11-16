@@ -33,7 +33,7 @@ public class SpaceTile : MonoBehaviour
     public bool CanVisit
     {
         get { return canVisit; }
-        set { speed = value; }
+        set { canVisit = value; }
     }
 
     public bool HasMiniGame
@@ -63,6 +63,11 @@ public class SpaceTile : MonoBehaviour
     public string Description
     {
         get { return description; }
+    }
+
+    public int TileID
+    {
+        get { return tileID; }
     }
 
 

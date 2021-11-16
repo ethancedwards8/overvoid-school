@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool checkTile(Directions tileDir)
     {
-        int currentTileID = currentTile.GetComponent<SpaceTile>().getTileID();
+        int currentTileID = currentTile.GetComponent<SpaceTile>().TileID;
         int mapWidth = currentMapBoundaries.GetComponent<Boundaries>().getMapWidth();
         int nextTileID = 0;
         GameObject nextTile;
@@ -121,10 +121,10 @@ public class PlayerMovement : MonoBehaviour
         {
             nextTile = GameObject.Find("space" + nextTileID);
 
-            if (nextTile.GetComponent<SpaceTile>().getCanVisitStatus())
+            if (nextTile.GetComponent<SpaceTile>().CanVisit)
             {
 
-                if (nextTile.GetComponent<SpaceTile>().getLockStatus()) {
+                if (nextTile.GetComponent<SpaceTile>().Locked) {
                     Debug.Log("The tile is locked");
                 } else {
                     currentTile = nextTile;
@@ -138,7 +138,6 @@ public class PlayerMovement : MonoBehaviour
         } else {
             found = false;
         }
-
         return found;
     }
 
