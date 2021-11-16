@@ -9,23 +9,25 @@ public class BlockSpawning : MonoBehaviour
     public GameObject block;
     public int blockX;
     public int blockY;
+    int totalBlocks = 0;
+    int currentBlocks = 0;
+
 
 
     void Start()
     {
-        coordsRandomizer();
+        totalBlocks = Random.Range(5, 50);
     }
 
     void Update()
     {
-
+        coordsRandomizer();
+        placeBlocks();
     }
 
 
     public void placeBlocks()
     {
-        int totalBlocks = 0;
-        int currentBlocks = 0;
         if (currentBlocks < totalBlocks)
         {
             Instantiate(block, new Vector2(blockX, blockY), Quaternion.identity);
@@ -40,7 +42,7 @@ public class BlockSpawning : MonoBehaviour
     public void coordsRandomizer()
     {
         blockX = Random.Range(-3, 3);
-        blockX = Random.Range(-50, 5);
+        blockY = Random.Range(-5, 5);
         Debug.Log("generated " + blockX + "," + blockY);
     }
 
