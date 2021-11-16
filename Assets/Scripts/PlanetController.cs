@@ -39,7 +39,7 @@ public class PlanetController : MonoBehaviour
         aTWR(planetType); // the planet type has an associated resource, this sets it
         gameObject.GetComponent<SpriteRenderer>().sprite = this.sprite;
         if (randomizesColor)
-            GetComponent<SpriteRenderer>().color = new Color(Random.value, Random.value, Random.value, 1f);
+            GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, .2f, .7f, .7f, .98f, 1f, 1f);
     }
 
     /////////////// FUNCTIONS/METHODS:
