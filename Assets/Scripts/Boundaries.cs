@@ -19,23 +19,20 @@ public class Boundaries : MonoBehaviour
         //checking players position against the min/max x/y values for current map and return true if we can move or false if not
 
         if((px <= xMax && px >= xMin) && (py <= yMax && py >= yMin))
-        {
             inBounds = true;
-        }
         else
-        {
             inBounds = false;
-        }
+        
         return inBounds;
     }
 
-    public int getMapHeight()
+    public int MapHeight
     {
-        return this.mapHeight;
+        get { return mapHeight; }
     }
 
-    public int getMapWidth()
+    public int MapWidth
     {
-        return this.mapWidth;
+        get { return mapWidth; }
     }
 }

@@ -7,8 +7,6 @@ using UnityEngine;
 public class BlockSpawning : MonoBehaviour
 {
     public GameObject block;
-    //public 
-
     public int blockX;
     public int blockY;
 
@@ -20,7 +18,7 @@ public class BlockSpawning : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
 
@@ -36,7 +34,6 @@ public class BlockSpawning : MonoBehaviour
         else
         {
 
-        }
     }
     
     public void coordsRandomizer()

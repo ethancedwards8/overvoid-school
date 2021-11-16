@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text.RegularExpressions;
 
-
-[System.Serializable]
 public class SpaceTile : MonoBehaviour
 {
     [SerializeField]
-    bool canVisit = true, hasMiniGame = false, locked = false, goalTile = false, visited = false;
+    private bool canVisit = true, hasMiniGame = false, locked = false, goalTile = false, hasVisited = false;
 
     private int tileID;
 
-    [SerializeField] public string description;
-    [SerializeField] public List<string> npcList;
-    [SerializeField] public List<string> tileResources;
+    [SerializeField] private string description;
+    //[SerializeField] public List<string> npcList;
+    [SerializeField] public List<EPlanetResource> tileResources;
     [SerializeField] public float difficulty = 1.0f;
     [SerializeField] public int fuelCost = 1;
-
-    //\\----------------------------------------------------\\//
 
     private void Start()
     {
@@ -31,45 +27,74 @@ public class SpaceTile : MonoBehaviour
         // creates an object related to the file
     }
 
-/*    public T Get<T>()
+    // https://stackoverflow.com/questions/11159438/looking-for-a-short-simple-example-of-getters-setters-in-c-sharp
+    // WOW, solves some issues.
+    // allows us more flexibility in the future. More specifically in the setters area.
+    public bool CanVisit
     {
-        return;
-    }
-*/
-    public bool getCanVisitStatus()
-    {
-        return this.canVisit;
-    }
-
-    public bool getLockStatus()
-    {
-        return this.locked;
+        get { return canVisit; }
+        set { canVisit = value; }
     }
 
-    public void setLockedStatus(bool val)
+    public bool HasMiniGame
     {
-        this.locked = val;
+        get { return hasMiniGame; }
+        set { hasMiniGame = value;}
     }
 
-    public string getDescription()
+    public bool Locked
     {
-        return this.description;
+        get { return locked; }
+        set { locked = value; }
     }
 
-    public int getTileID()
+    public bool GoalTile
     {
-        return this.tileID;
+        get { return goalTile; }
+        set { goalTile = value; }
     }
 
-    public bool getVisited()
+    public bool HasVisited
     {
-        return this.visited;
+        get { return hasVisited; }
+        set { hasVisited = value; }
     }
 
-    public void setVisited(bool val)
+    public string Description
     {
-        this.visited = val;
+        get { return description; }
     }
 
+    public int TileID
+    {
+        get { return tileID; }
+    }
+
+
+
+    // public bool getCanVisitStatus()
+    // {
+    //     return this.canVisit;
+    // }
+
+    // public bool getLockStatus()
+    // {
+    //     return this.locked;
+    // }
+
+    // public void setLockedStatus(bool val)
+    // {
+    //     this.locked = val;
+    // }
+
+    // public string getDescription()
+    // {
+    //     return this.description;
+    // }
+
+    // public int getTileID()
+    // {
+    //     return this.tileID;
+    // }
 
 }

@@ -53,19 +53,19 @@ public class PlanetController : MonoBehaviour
         switch (type)
         {
             case EPlanetType.RADIOACTIVE:
-                setPlanetResource(EPlanetResource.FUEL);
+                PlanetResource = EPlanetResource.FUEL;
                 break;
 
             case EPlanetType.VOLCANIC:
-                setPlanetResource(EPlanetResource.OXYGEN);
+                PlanetResource = EPlanetResource.OXYGEN;
                 break;
 
             case EPlanetType.JUNGLE:
-                setPlanetResource(EPlanetResource.FOOD);
+                PlanetResource = EPlanetResource.FOOD;
                 break;
 
             case EPlanetType.ARCTIC:
-                setPlanetResource(EPlanetResource.WATER);
+                PlanetResource = EPlanetResource.WATER;
                 break;
 
             default:
@@ -75,25 +75,15 @@ public class PlanetController : MonoBehaviour
     }
 
 
-    // simple get'ers and set'ers 
-    private void setPlanetType(EPlanetType type)
+    public EPlanetType PlanetType
     {
-        this.planetType = type;
+        get { return planetType; }
+        set { planetType = value; }
     }
 
-    private void setPlanetResource(EPlanetResource resource)
+    public EPlanetResource PlanetResource
     {
-        this.planetResource = resource;
+        get { return planetResource; }
+        set { planetResource = value; }
     }
-
-    public EPlanetType getPlanetType()
-    {
-        return this.planetType;
-    }
-
-    public EPlanetResource getPlanetResource()
-    {
-        return this.planetResource;
-    }
-
 }
