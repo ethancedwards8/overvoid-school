@@ -25,6 +25,7 @@ public class PlanetController : MonoBehaviour
     // signifies if the planet is a dwarf planet
     [SerializeField] private bool dwarf = false;
     [SerializeField] private bool deleteAfterVisit = false;
+    [SerializeField] private bool randomizesColor = false;
 
     // the sprite that the planet will use
     [SerializeField] private Sprite sprite;
@@ -36,6 +37,9 @@ public class PlanetController : MonoBehaviour
     void Start()
     {
         aTWR(planetType); // the planet type has an associated resource, this sets it
+        gameObject.GetComponent<SpriteRenderer>().sprite = this.sprite;
+        if (randomizesColor)
+            GetComponent<SpriteRenderer>().color = new Color(Random.value, Random.value, Random.value, 1f);
     }
 
     /////////////// FUNCTIONS/METHODS:
