@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BlockSpawning : MonoBehaviour
 {
-    public GameObject[] block;
+    public GameObject block;
     //public 
 
     public int blockX;
@@ -26,7 +26,17 @@ public class BlockSpawning : MonoBehaviour
 
     public void placeBlocks()
     {
+        int totalBlocks = 0;
+        int currentBlocks = 0;
+        if (currentBlocks < totalBlocks)
+        {
+            Instantiate(block, new Vector2(blockX, blockY), Quaternion.identity);
+            currentBlocks++;
+        }
+        else
+        {
 
+        }
     }
     
     public void coordsRandomizer()
