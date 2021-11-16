@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     public bool checkTile(Directions tileDir)
     {
         int currentTileID = currentTile.GetComponent<SpaceTile>().TileID;
-        int mapWidth = currentMapBoundaries.GetComponent<Boundaries>().getMapWidth();
+        int mapWidth = currentMapBoundaries.GetComponent<Boundaries>().MapWidth;
         int nextTileID = 0;
         GameObject nextTile;
         bool found = false;
