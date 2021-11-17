@@ -26,6 +26,9 @@ public class PlanetController : MonoBehaviour
     [SerializeField] private bool dwarf = false;
     [SerializeField] private bool deleteAfterVisit = false;
     [SerializeField] private bool randomizesColor = false;
+    private int resourceAmount;
+    public bool depleted = false;
+    public InventoryItem finalResource;
 
     // the sprite that the planet will use
     [SerializeField] private Sprite sprite;
@@ -38,6 +41,15 @@ public class PlanetController : MonoBehaviour
     {
         aTWR(planetType); // the planet type has an associated resource, this sets it
         gameObject.GetComponent<SpriteRenderer>().sprite = this.sprite;
+
+        if (dwarf)
+            resourceAmount = Random.Range(1, 3);
+        else
+            resourceAmount = Random.Range(3, 5);
+
+        finalResource.value = resourceAmount;
+        finalResource.type = planetResource;
+
         if (randomizesColor)
             GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, .2f, .7f, .7f, .98f, 1f, 1f);
     }
@@ -78,7 +90,6 @@ public class PlanetController : MonoBehaviour
         }
     }
 
-
     public EPlanetType PlanetType
     {
         get { return planetType; }
@@ -90,4 +101,11 @@ public class PlanetController : MonoBehaviour
         get { return planetResource; }
         set { planetResource = value; }
     }
+
+    public int ResourceAmount
+    {
+        get { return resourceAmount; }
+        set { resourceAmount = value; }
+    }
+
 }

@@ -19,8 +19,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentMapBoundaries = currentMap.GetComponent<Boundaries>();
-        //currentTile.
-       // Debug.Log(currentTile.GetComponent<SpaceTile>().getDescription());
     }
 
     void Update()
@@ -35,13 +33,10 @@ public class PlayerMovement : MonoBehaviour
             move(Directions.EAST);
         else
             ;
-
-
-
-
-        if (currentTile.GetComponent<SpaceTile>().GoalTile)
-            Application.Quit();
     }
+
+
+
 
     public void move(Directions where)
     {
@@ -157,5 +152,16 @@ public class PlayerMovement : MonoBehaviour
             locked = false;
 
         return locked;
+    }
+    public void getMaterials()
+    {
+        EPlanetResource pR = currentTile.GetComponent<PlanetController>().PlanetResource;
+        bool depleted = currentTile.GetComponent<PlanetController>().depleted;
+
+        if (!depleted)
+        {
+            gameObject.GetComponent<InventoryController>().addItem(currentTile.GetComponent<PlanetController>().finalResource);
+        }
+
     }
 }
