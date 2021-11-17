@@ -33,6 +33,17 @@ public class PlayerMovement : MonoBehaviour
             move(Directions.EAST);
         else
             ;
+
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            getMaterials();
+        }
+
+
+        if (currentTile.GetComponent<SpaceTile>().GoalTile)
+            Application.Quit();
+
     }
 
 
