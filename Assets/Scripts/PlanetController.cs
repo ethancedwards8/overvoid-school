@@ -31,8 +31,8 @@ public class PlanetController : MonoBehaviour
     [SerializeField] private Sprite sprite;
 
     // planet types/resources
-    [SerializeField] public EPlanetType planetType; // the planetType will be set in the inspector, everything else revolves around it
-    public EPlanetResource planetResource;
+    [SerializeField] private EPlanetType planetType; // the planetType will be set in the inspector, everything else revolves around it
+    private EPlanetResource planetResource;
 
     void Start()
     {

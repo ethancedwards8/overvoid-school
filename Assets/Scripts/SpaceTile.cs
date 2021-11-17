@@ -13,9 +13,9 @@ public class SpaceTile : MonoBehaviour
     [SerializeField] private string description;
     //[SerializeField] public List<string> npcList;
     [SerializeField] public List<EPlanetResource> tileResources;
-    [SerializeField] public float difficulty = 1.0f;
+/*    [SerializeField] public float difficulty = 1.0f;
     [SerializeField] public int fuelCost = 1;
-
+*/
     private void Start()
     {
         string tileNum = Regex.Replace(gameObject.name, "[a-z]", ""); // regex to the rescue! 

@@ -35,6 +35,12 @@ public class PlayerMovement : MonoBehaviour
             move(Directions.EAST);
         else
             ;
+
+
+
+
+        if (currentTile.GetComponent<SpaceTile>().GoalTile)
+            Application.Quit();
     }
 
     public void move(Directions where)
