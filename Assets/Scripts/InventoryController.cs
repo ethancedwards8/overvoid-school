@@ -4,13 +4,13 @@ using UnityEngine;
 
 public struct InventoryItem
 {
-    public string name; // the name of item
+    //public string name; // the name of item
     public EPlanetResource type; // the type of item
     public float value;
 
-    public InventoryItem(string name, EPlanetResource type, float value)
+    public InventoryItem(/*string name,*/ EPlanetResource type, float value)
     {
-        this.name = name;
+        //this.name = name;
         this.type = type;
         this.value = value;
     }
@@ -35,6 +35,7 @@ public class InventoryController : MonoBehaviour
 
         if (inventory.Count < maxInvLength) {
             inventory.Add(item);
+            Debug.Log("added " + item);
             success = true;
         } else {
             Debug.Log("sorry, you're trying to add to a full array");
@@ -64,7 +65,7 @@ public class InventoryController : MonoBehaviour
     public List<InventoryItem> listItems()
     {
         for (int i = 0; i < inventory.Count; i++)
-            Debug.Log(this.inventory[i].name);
+            Debug.Log(this.inventory[i]);
 
         return this.inventory;
     }
