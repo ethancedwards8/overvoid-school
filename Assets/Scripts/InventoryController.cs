@@ -20,7 +20,7 @@ public struct InventoryItem
 
 public class InventoryController : MonoBehaviour
 {
-    [SerializeField] private int maxInvLength = 5; // max inv length
+    [SerializeField] private int maxInvLength = 20; // max inv length
 
     [SerializeField] private List<InventoryItem> inventory = new List<InventoryItem>(); //Serializable so that we could manually add things
 

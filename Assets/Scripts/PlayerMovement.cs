@@ -166,12 +166,15 @@ public class PlayerMovement : MonoBehaviour
     }
     public void getMaterials()
     {
-        EPlanetResource pR = currentTile.GetComponent<PlanetController>().PlanetResource;
-        bool depleted = currentTile.GetComponent<PlanetController>().depleted;
+        PlanetController pController = currentTile.GetComponent<PlanetController>();
+        EPlanetResource pResource = pController.PlanetResource;
+        bool depleted = pController.depleted;
 
-        if (!depleted)
-        {
-            gameObject.GetComponent<InventoryController>().addItem(currentTile.GetComponent<PlanetController>().finalResource);
+        if (!depleted) {
+            gameObject.GetComponent<InventoryController>().addItem(pController.finalResource);
+            pController.depleted = true;
+        } else {
+            Debug.Log("Sorry, planets resources have been depleted");
         }
 
     }

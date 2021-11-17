@@ -69,32 +69,4 @@ public class SpaceTile : MonoBehaviour
     {
         get { return tileID; }
     }
-
-
-
-    // public bool getCanVisitStatus()
-    // {
-    //     return this.canVisit;
-    // }
-
-    // public bool getLockStatus()
-    // {
-    //     return this.locked;
-    // }
-
-    // public void setLockedStatus(bool val)
-    // {
-    //     this.locked = val;
-    // }
-
-    // public string getDescription()
-    // {
-    //     return this.description;
-    // }
-
-    // public int getTileID()
-    // {
-    //     return this.tileID;
-    // }
-
 }
