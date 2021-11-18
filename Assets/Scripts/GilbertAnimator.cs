@@ -5,6 +5,7 @@ using UnityEngine;
 public class GilbertAnimator : MonoBehaviour
 {
     [SerializeField] Sprite[] sprites;
+    [SerializeField] float animationSpeed;
 
     // Update is called once per frame
     void Update()
@@ -16,9 +17,9 @@ public class GilbertAnimator : MonoBehaviour
     {
         while (true)
         {
-            yield return wait(0.75f);
+            yield return wait(animationSpeed);
             GetComponent<SpriteRenderer>().sprite = sprites[0];
-            yield return wait(0.75f);
+            yield return wait(animationSpeed);
             GetComponent<SpriteRenderer>().sprite = sprites[1];
         }
     }
