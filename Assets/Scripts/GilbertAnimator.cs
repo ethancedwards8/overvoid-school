@@ -8,7 +8,7 @@ public class GilbertAnimator : MonoBehaviour
     [SerializeField] float animationSpeed;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
         StartCoroutine(animate());
     }
